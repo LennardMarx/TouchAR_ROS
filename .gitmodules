@@ -4,4 +4,4 @@
 
 [submodule "franka_ros"]
   path = src/franka_ros
-  url = https://github.com/frankaemika/franka_ros.git
+  url = git@github.com:LennardMarx/franka_ros_fork.git
