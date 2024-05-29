@@ -1,0 +1,7 @@
+[submodule "ROS-TCP-Endpoint"]
+  path = src/ROS-TCP-Endpoint
+  url = https://github.com/Unity-Technologies/ROS-TCP-Endpoint.git
+
+[submodule "franka_ros"]
+  path = src/franka_ros
+  url = git@github.com:LennardMarx/franka_ros_fork.git
