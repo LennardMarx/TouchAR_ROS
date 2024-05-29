@@ -3,16 +3,17 @@ import rospy
 import actionlib
 from std_msgs.msg import String
 from std_msgs.msg import Float32
-from franka_gripper.msg import MoveAction, MoveGoal
+from franka_gripper.msg import MoveAction, MoveGoal, StopAction, StopGoal
 
 def callback(data):
     #rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
-    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data)
+    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
     
     target_width = data.data
-    target_speed = 0.1
+    target_speed = 1.0
 
     result = gripper_move_client(target_width, target_speed)
+    rospy.loginfo("Gripper command: %s", result)
     
 def listener():
 
@@ -33,15 +34,21 @@ def listener():
 
 def gripper_move_client(width, speed):
     # Create a ROS action client for the MoveAction
+    client = actionlib.SimpleActionClient('franka_gripper/stop', StopAction)
+    goal = StopGoal()
+    client.send_goal(goal)
+
     client = actionlib.SimpleActionClient('franka_gripper/move', MoveAction)
 
     # Wait for the action server to become available
-    client.wait_for_server()
+    #client.wait_for_server()
 
     # Create a goal to send to the action server
     goal = MoveGoal()
     goal.width = width
     goal.speed = speed
+
+    #client.cancel_goal()
 
     # Send the goal to the action server and wait for result
     client.send_goal(goal)
