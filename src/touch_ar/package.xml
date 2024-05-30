@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<package format="2">
+  <!-- Copied from franka_ros franka_example_controllers -->
+  <name>touch_ar</name>
+  <version>0.1.0</version>
+  <description>Additions to the franka_ros packages for the TouchAR project</description>
+  <maintainer email="l.marx@utwente.nl">Lennard Marx</maintainer>
+  <license>Apache 2.0</license>
+
+  <url type="website">https://github.com/LennardMarx/TouchAR_ROS</url>
+  <url type="repository">https://github.com/LennardMarx/TouchAR_ROS</url>
+  <url type="bugtracker"></url>
+  <author>Franka Robotics GmbH, Lennard Marx</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+  <build_depend>eigen</build_depend>
+
+  <build_export_depend>message_runtime</build_export_depend>
+
+  <depend>controller_interface</depend>
+  <depend>dynamic_reconfigure</depend>
+  <depend>eigen_conversions</depend>
+  <depend>franka_hw</depend>
+  <depend>franka_gripper</depend>
+  <depend>geometry_msgs</depend>
+  <depend>hardware_interface</depend>
+  <depend>joint_limits_interface</depend>
+  <depend>tf</depend>
+  <depend>tf_conversions</depend>
+  <depend>libfranka</depend>
+  <depend>pluginlib</depend>
+  <depend>realtime_tools</depend>
+  <depend>roscpp</depend>
+  <depend>urdf</depend>
+  <depend>visualization_msgs</depend>
+
+  <exec_depend>franka_control</exec_depend>
+  <exec_depend>franka_description</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>rospy</exec_depend>
+
+  <export>
+    <controller_interface plugin="${prefix}/touch_ar_plugin.xml" />
+  </export>
+</package>
